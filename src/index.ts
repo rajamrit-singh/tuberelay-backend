@@ -1,4 +1,5 @@
-import s3uploadRouter from "./routes/s3upload";
+import s3uploadRouter from "./routes/s3Routes";
+import usersRouter from "./routes/userRoutes";
 
 const express = require('express');
 const app = express();
@@ -10,6 +11,7 @@ app.use(express.json());
 
 app.use(cors());
 app.use(s3uploadRouter);
+app.use(usersRouter);
 app.listen(port, () => {
   console.log('server is up on port ' + port)
 })
