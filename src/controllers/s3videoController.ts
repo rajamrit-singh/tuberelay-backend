@@ -1,18 +1,8 @@
 import { S3Client, PutObjectCommand, S3ClientConfig } from '@aws-sdk/client-s3'; 
 import { v4 as uuidv4 } from "uuid"; 
-import dotenv from "dotenv";
+import { s3config } from '../config/s3config';
 
-dotenv.config(); 
-
-const config: S3ClientConfig = {
-    credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
-    },
-    region: process.env.AWS_REGION
-};
-
-const s3 = new S3Client(config);
+const s3 = new S3Client(s3config);
 
 export const uploadVideoToS3 = async (userId: string, file: Express.Multer.File) => { 
 
