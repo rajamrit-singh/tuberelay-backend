@@ -1,7 +1,7 @@
 import { cognitoClient, cognitoConfig } from '../config/cognitoConfig';
 import { AdminCreateUserCommand, InitiateAuthCommand, GlobalSignOutCommand, AuthFlowType, ChangePasswordCommand, AdminCreateUserCommandInput, AdminSetUserPasswordCommand, InitiateAuthCommandInput, GetUserCommand } from '@aws-sdk/client-cognito-identity-provider';
 import { checkRequiredParameters, formatCognitoUserAttributes, getUserAttributesObject } from '../utils/usersUtils';
-import { UserRegistrationData } from '../types/userTypes';
+import { UserRegistrationData } from '../models/userTypes';
 import { error } from 'console';
 
 export const registerUser = async (userData: UserRegistrationData): Promise<UserRegistrationData> => {

@@ -1,6 +1,6 @@
 import { AttributeType } from "@aws-sdk/client-cognito-identity-provider";
 import { REQUIRED_KEYS_FOR_REGISTRATION } from "../constants";
-import { UserRegistrationData } from "../types/userTypes";
+import { UserRegistrationData } from "../models/userTypes";
 
 /**
  * Checks if all required parameters for user registration are present.

@@ -1,7 +1,7 @@
 import express from 'express';
 import { registerUser, loginUser, logoutUser } from '../controllers/userController';
 import { checkRequiredParameters } from '../utils/usersUtils';
-import { UserRegistrationData } from '../types/userTypes';
+import { UserRegistrationData } from '../models/userTypes';
 
 const usersRouter = express.Router();
 
