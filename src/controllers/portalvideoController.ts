@@ -1,8 +1,8 @@
-import { UserVideo } from "../models/userVideo"; 
+import { UserVideo } from "../models/userVideo";
 import pool from "../db/pool";
 import dotenv from "dotenv";
 
-dotenv.config(); 
+dotenv.config();
 export const insertUserVideo = async ({
     ownerId,
     editorId,
@@ -46,11 +46,11 @@ export const insertUserVideo = async ({
             userSchedule
         ];
 
-        await pool.query(queryText, queryValues); 
+        await pool.query(queryText, queryValues);
         await pool.query('COMMIT');
     } catch (error) {
         await pool.query('ROLLBACK');
         console.error('Error inserting user video:', error);
-        throw error; 
+        throw error;
     }
 };

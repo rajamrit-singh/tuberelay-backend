@@ -38,7 +38,7 @@ export const registerUser = async (userData: UserRegistrationData): Promise<User
 export const loginUser = async (email: string, password: string) => {
   const initiateAuthParams: InitiateAuthCommandInput = {
     AuthFlow: AuthFlowType.USER_PASSWORD_AUTH,  // selected auth type in cognito
-    ClientId: cognitoConfig.clientId, 
+    ClientId: cognitoConfig.clientId,
     AuthParameters: {
       USERNAME: email,
       PASSWORD: password,
@@ -54,20 +54,20 @@ export const loginUser = async (email: string, password: string) => {
     return {
       ...loginInfo,
       accessToken: response.AuthenticationResult?.AccessToken,
-    }; 
+    };
   } catch (error: any) {
-    throw new Error(error.message); 
+    throw new Error(error.message);
   }
 };
 
 export const logoutUser = async (token: string) => {
-  const globalSignOutParams = { AccessToken: token }; 
+  const globalSignOutParams = { AccessToken: token };
   const command = new GlobalSignOutCommand(globalSignOutParams);
 
   try {
     await cognitoClient.send(command);
   } catch (error) {
-    throw new Error('Logout failed'); 
+    throw new Error('Logout failed');
   }
 };
 
@@ -98,7 +98,7 @@ export const getLoginInfo = async (accessToken: string) => {
     } else {
       throw error("attributes not found")
     }
-  } catch(error: any) {
+  } catch (error: any) {
     throw new Error(error.message)
   }
 };

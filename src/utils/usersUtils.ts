@@ -42,16 +42,16 @@ export const getUserAttributesObject = (userData: UserRegistrationData) => {
         {
             Name: "name",
             Value: userData.name
-          },
-          
-          {
+        },
+
+        {
             Name: "birthdate",
             Value: userData.birthdate
-          },
-          
-          {
+        },
+
+        {
             Name: "gender",
             Value: userData.gender
-          }
+        }
     ]
 }

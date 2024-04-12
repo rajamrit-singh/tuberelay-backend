@@ -5,8 +5,10 @@ import { insertUserVideo } from '../controllers/portalvideoController';
 
 const uploadVideoRouter: Router = Router();
 
-const upload = multer({ storage: multer.memoryStorage() }); 
+// Configures multer to store uploaded files in memory temporarily
+const upload = multer({ storage: multer.memoryStorage() });
 
+// multer middleware will look for a single file uploaded with name 'video'
 uploadVideoRouter.post('/uploadVideo', upload.single('video'), async (req: Request, res: Response, next: NextFunction) => {
     try {
         if (!req.body.ownerId || !req.file || !req.body.visibility) {
@@ -16,9 +18,9 @@ uploadVideoRouter.post('/uploadVideo', upload.single('video'), async (req: Reque
         const videoKey = await uploadVideoToS3(req.body.ownerId, req.file);
         await insertUserVideo(req.body, videoKey)
 
-        res.status(200).json({ message: 'Video upload and processing initiated' }); 
+        res.status(200).json({ message: 'Video upload and processing initiated' });
     } catch (error) {
-        console.error("Error in /uploadVideo route:", error); 
+        console.error("Error in /uploadVideo route:", error);
         res.status(500).json({ error: 'An error occurred during upload' });
     }
 });
